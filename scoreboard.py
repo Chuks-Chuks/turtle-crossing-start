@@ -17,9 +17,7 @@ class Scoreboard(Turtle):
         self.score += 1
         self.clear()
         self.write(f"Score: {self.score}", False, "center", FONT)
-        self.speed *= 0.9
 
     def game_over(self):
         self.goto(0, 0)
         self.write(f"GAME OVER", False, "center", FONT)
-

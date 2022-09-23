@@ -3,7 +3,7 @@ from turtle import Screen
 from player import Player
 from car_manager import CarManager
 from scoreboard import Scoreboard
-
+from level import Level
 screen = Screen()
 screen.setup(width=600, height=600)
 screen.listen()
@@ -13,10 +13,10 @@ player = Player()
 scoreboard = Scoreboard()
 screen.onkey(player.move, "Up")
 car_manager = CarManager()
+level = Level()
 
 game_is_on = True
 while game_is_on:
-    car_manager.count += 1
     time.sleep(scoreboard.speed)
     screen.update()
     # Creating and moving the car
@@ -31,7 +31,9 @@ while game_is_on:
 
     if player.finish_line():
         scoreboard.update_score()
+        level.level_up()
         player.starting_point()
+        car_manager.movement_continue()
 
 
 screen.exitonclick()
